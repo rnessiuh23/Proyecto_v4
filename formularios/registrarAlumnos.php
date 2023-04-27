@@ -310,8 +310,8 @@ while ($fila = mysqli_fetch_array($resultado_Carreras)) {
       <label for="sexo">Sexo</label>
       <select name="sexo" id="sexo" class="form-select text-uppercase" aria-label="Default select example">
         <option value="" selected>-- Selecciona --</option>
-        <option <?php echo $sexo === "1" ? 'selected' : '' ?> value="1">Masculino</option>
-        <option <?php echo $sexo === "2" ? 'selected' : '' ?> value="2">Femenino</option>
+        <option <?php echo $sexo === "Masculino" ? 'selected' : '' ?> value="Masculino">Masculino</option>
+        <option <?php echo $sexo === "Femenino" ? 'selected' : '' ?> value="Femenino">Femenino</option>
       </select>
       <?php if(isset($errores['sexo'])): ?>
           <div class="message-error" id="nombre-error">

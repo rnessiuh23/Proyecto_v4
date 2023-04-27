@@ -239,6 +239,19 @@ $(document).ready(function(){
     }
   });
 
+  const buscadorTel = document.getElementById('buscadorTel');
+  buscadorTel.addEventListener('input', function() {
+    let value = this.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+      value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+    }
+    if (value.length >= 10) {
+      value = `${value.slice(0, 9)}-${value.slice(9)}`;
+    }
+    this.value = value.slice(0, 14);
+  });
+  
+
 </script>
             
 <div class="card">
