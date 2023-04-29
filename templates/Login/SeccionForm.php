@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     placeholder="correo@uaem.com"
                     aria-label="Email"
                     aria-describedby="email-addon"
+                    autofocus
                   />
                 </div>
                 <label for="contrasenaUsu">Contraseña</label>
@@ -80,10 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="text-center">
                   <button
                     type="submit"
-                    class="btn bg-gradient-info w-100 mt-4 mb-0"
-                  >
+                    class="btn bg-gradient-info w-100 mt-4 mb-0">
                     Iniciar sesión
                   </button>
+                </div>
+                <div class="text-center my-3">
+                  <a href="./templates/Login/recuperacion.php">¿Olvidaste tu contraseña?</a>
                 </div>
               </form>
             </div>
@@ -97,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div
               class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
               style="
-                background-image: url('../assets/img/curved-images/fondoLog.jpg');
+                background-image: url('./assets/img/curved-images/fondoLog.jpg');
               "
             ></div>
           </div>
