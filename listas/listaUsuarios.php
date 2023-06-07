@@ -156,74 +156,10 @@ document.addEventListener('keydown', function(event) {
              <div class="card-header pb-0 p-3">
             </div>
 
-
-<!--Inputs para realizar una busqueda por filtros-->
-
-          <label for="buscadorJefe">Busqueda por nombre:</label>
-          <input type="text" id="buscadorNombre" class="form-control form-control-sm" placeholder="nombre">
-
-          <label for="buscadorJefe">Busqueda por apellidos:</label>
-          <input type="text" id="buscadorApellidos" class="form-control form-control-sm" placeholder="apellidos">
-
-          <label for="buscadorJefe">Busqueda por correo:</label>
-          <input type="text" id="buscadorCorreo" class="form-control form-control-sm" placeholder="correo">
-
-          <label for="buscador">Busqueda por rol:</label>
-            <select id="buscadorRol">
-            <option value="">Todos</option>
-            <option value="Usuario">Usuario</option>
-            <option value="Administrador">Administrador</option>
-            </select>
-
-
-<script> //Script que ejecuta el funcionamiento de los filtros de busqueda
-
-$(document).ready(function(){
-    var rol = $("#buscadorRol").val().toLowerCase(); //Valor inicial
-
-    $("#buscadorRol").on("change", function() {
-      rol = $(this).val().toLowerCase(); //Actualizacion del valor de 'sexo'
-      buscar(); //Llamamos a la funcion de busqueda
-    });
-
-    $("#buscadorNombre").on("keyup", function() {
-      buscar(); 
-    });
-
-    $("#buscadorApellidos").on("keyup", function() {
-    buscar(); 
-    });
-
-    $("#buscadorCorreo").on("keyup", function() {
-    buscar(); 
-    });
-
-
-    function buscar() {
-      var nombre = $("#buscadorNombre").val().toLowerCase();
-      var apellidos = $("#buscadorApellidos").val().toLowerCase();
-      var correo = $("#buscadorCorreo").val();
-
-
-      $("#tabla-usu tr").filter(function() {
-        var matchesNombre = $(this).find(".nombre-value").text().toLowerCase().indexOf(nombre) > -1;
-        var matchesApellidos = $(this).find(".apellidos-value").text().toLowerCase().indexOf(apellidos) > -1;
-        var matchesCorreo = $(this).find(".correo-value").text().indexOf(correo) > -1;
-        var matchesRol = $(this).find(".rol-value").text().toLowerCase().indexOf(rol) > -1;
-
-        $(this).toggle(matchesNombre && matchesCorreo && matchesRol && matchesApellidos);
-
-      });
-    }
-  });
-
-</script>
-
-
             
 <div class="card">
   <div class="table-responsive">
-    <table class="table align-items-center mb-0" id="tabla-lista">
+    <table class="table align-items-center mb-0" id="tablaUsu">
       <thead class="">
         <tr>
           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Acción</th>
@@ -309,12 +245,37 @@ $(document).ready(function(){
   </div>
 </footer>
   
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/datatable.js"></script>
+  
+  <script src="../assets/js/jquery-3.3.1.js"></script>
+  <script src="../assets/js/jquery.dataTables.min.js"></script>
+  <script src="../assets/js/dataTables.buttons.min.js"></script>
+  <script src="../assets/js/buttons.flash.min.js"></script>
+  <script src="../assets/js/jszip.min.js"></script>
+  <script src="../assets/js/pdfmake.min.js"></script>
+  <script src="../assets/js/vfs_fonts.js"></script>
+  <script src="../assets/js/buttons.html5.min.js"></script>
+  <script src="../assets/js/bootstrap.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/bootstrap-toggle.min.js"></script>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.css"/>
+
+  <!-- DataTables JS -->
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.js"></script>
+
+  <!-- DataTables Buttons JS -->
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

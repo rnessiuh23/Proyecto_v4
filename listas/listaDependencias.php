@@ -156,85 +156,10 @@ document.addEventListener('keydown', function(event) {
              <div class="card-header pb-0 p-3">
             </div>
 
-<!--Inputs para realizar una busqueda por filtros-->
 
-<label for="buscadorJefe">Busqueda por nombre:</label>
-<input type="text" id="buscadorNombre" class="form-control form-control-sm" placeholder="nombre">
-<label for="buscadorJefe">Busqueda por jefe:</label>
-<input type="text" id="buscadorJefe" class="form-control form-control-sm" placeholder="jefe">
-<label for="buscadorJefe">Busqueda por telefono:</label>
-<input type="tel" id="buscadorTel" class="form-control form-control-sm" placeholder="tel">
-
-
-  <label for="buscador">Busqueda por sector:</label>
-  <select id="buscadorSector">
-  <option value="">Todos</option>
-  <option value="Publico">Publico</option>
-  <option value="Privado">Privado</option>
-  </select>
-            
 <div class="card">
   <div class="table-responsive">
-
-  
-  <script> //Script que ejecuta el funcionamiento de los filtros de busqueda
-  //Hacemos que los valores de los filtros se guarden
-  $(document).ready(function(){
-    var sector = $("#buscadorSector").val().toLowerCase(); //Valor inicial
-
-    $("#buscadorSector").on("change", function() {
-      sector = $(this).val().toLowerCase(); //Actualizacion del valor de 'sector'
-      buscar(); //Llamamos a la funcion de busqueda
-    });
-
-    $("#buscadorNombre").on("keyup", function() {
-      buscar(); 
-    });
-
-    $("#buscadorJefe").on("keyup", function() {
-    buscar(); 
-    });
-
-    $("#buscadorTel").on("keyup", function() {
-    buscar(); 
-    });
-
-
-    function buscar() {
-      var nombre = $("#buscadorNombre").val().toLowerCase();
-      var jefe = $("#buscadorJefe").val().toLowerCase();
-      var telefono = $("#buscadorTel").val();
-
-
-      $("#tabla-lista tr").filter(function() {
-        var matchesNombre = $(this).find(".nombre-value").text().toLowerCase().indexOf(nombre) > -1;
-        var matchesSector = $(this).find(".sector-value").text().toLowerCase().indexOf(sector) > -1;
-        var matchesJefe = $(this).find(".jefe-value").text().toLowerCase().indexOf(jefe) > -1;
-        var matchesTelefono = $(this).find(".tel-value").text().indexOf(telefono) > -1;
-
-        $(this).toggle(matchesNombre && matchesSector && matchesJefe && matchesTelefono);
-
-      });
-    }
-  });
-
-  const buscadorTel = document.getElementById('buscadorTel');
-  buscadorTel.addEventListener('input', function() {
-    let value = this.value.replace(/\D/g, '');
-    if (value.length >= 2) {
-      value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-    }
-    if (value.length >= 10) {
-      value = `${value.slice(0, 9)}-${value.slice(9)}`;
-    }
-    this.value = value.slice(0, 14);
-  });
-  
-</script>
-
-
-
-    <table class="table align-items-center mb-0" id="tabla-lista">
+    <table class="table align-items-center mb-0" id="tablaDep">
       <thead class="">
         <tr>
           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Acción</th>
@@ -246,7 +171,7 @@ document.addEventListener('keydown', function(event) {
           <!-- <th class="text-secondary opacity-7"></th> -->
         </tr>
       </thead>
-      <tbody id="tabla-lista">
+      <tbody id="tabla-Dep">
       <?php if (empty($dependencias)): ?>
         <tr>
           <td colspan="10" class="text-center">No se encontraron registros.</td>
@@ -292,9 +217,6 @@ document.addEventListener('keydown', function(event) {
           <td class="align-middle text-center sector-value">
             <p class="text-xs font-weight-bold mb-0"><?= $dependencia['sector'] ?></p>
           </td>
-
-
-          
           
         </tr>
         <?php endforeach; ?>
@@ -332,7 +254,33 @@ document.addEventListener('keydown', function(event) {
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/datatable.js"></script>
-  <script>
+  
+  <script src="../assets/js/jquery-3.3.1.js"></script>
+  <script src="../assets/js/jquery.dataTables.min.js"></script>
+  <script src="../assets/js/dataTables.buttons.min.js"></script>
+  <script src="../assets/js/buttons.flash.min.js"></script>
+  <script src="../assets/js/jszip.min.js"></script>
+  <script src="../assets/js/pdfmake.min.js"></script>
+  <script src="../assets/js/vfs_fonts.js"></script>
+  <script src="../assets/js/buttons.html5.min.js"></script>
+  <script src="../assets/js/bootstrap.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/bootstrap-toggle.min.js"></script>
+
+  <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.css"/>
+
+<!-- DataTables JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.js"></script>
+
+<!-- DataTables Buttons JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+
+
+<script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {

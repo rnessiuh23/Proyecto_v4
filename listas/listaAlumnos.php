@@ -161,98 +161,6 @@ document.addEventListener('keydown', function(event) {
              <div class="card-header pb-0 p-3">
             </div>
 
-<!--Inputs para realizar una busqueda por filtros-->
-
-          <label for="buscadorJefe">Busqueda por no. Cuenta:</label>
-          <input type="text" id="buscadorCuenta" class="form-control form-control-sm" placeholder="cuenta">
-
-          <label for="buscadorJefe">Busqueda por nombre:</label>
-          <input type="text" id="buscadorNombre" class="form-control form-control-sm" placeholder="nombre">
-
-          <label for="buscador">Busqueda por sexo:</label>
-            <select id="buscadorSexo">
-            <option value="">Todos</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            </select>
-
-          <label for="buscador">Busqueda por carrera:</label>
-            <select id="buscadorCarrera">
-            <option value="">Todos</option>
-            <option value="LDE">LDE</option>
-            <option value="LIA">LIA</option>
-            <option value="ICO">ICO</option>
-            <option value="LDI">LDI</option>
-            <option value="LCO">LCO</option>
-            <option value="LEN">LEN</option>
-            </select>
-
-            <label for="buscadorJefe">Busqueda por telefono:</label>
-            <input type="tel" id="buscadorTel" class="form-control form-control-sm" placeholder="tel">
-
-
-<script> //Script que ejecuta el funcionamiento de los filtros de busqueda
-
-$(document).ready(function(){
-    var sexo = $("#buscadorSexo").val().toLowerCase(); //Valor inicial
-    var carrera = $("#buscadorCarrera").val().toLowerCase();
-
-    $("#buscadorSexo").on("change", function() {
-      sexo = $(this).val().toLowerCase(); //Actualizacion del valor de 'sexo'
-      buscar(); //Llamamos a la funcion de busqueda
-    });
-
-    $("#buscadorNombre").on("keyup", function() {
-      buscar(); 
-    });
-
-    $("#buscadorCarrera").on("change", function() {
-      carrera = $(this).val().toLowerCase();
-      buscar(); 
-    });
-
-    $("#buscadorTel").on("keyup", function() {
-    buscar(); 
-    });
-
-    $("#buscadorCuenta").on("keyup", function() {
-    buscar(); 
-    });
-
-
-    function buscar() {
-      var nombre = $("#buscadorNombre").val().toLowerCase();
-      var cuenta = $("#buscadorCuenta").val().toLowerCase();
-      var telefono = $("#buscadorTel").val();
-
-
-      $("#tabla-alumno tr").filter(function() {
-        var matchesNombre = $(this).find(".nombre-value").text().toLowerCase().indexOf(nombre) > -1;
-        var matchesSexo = $(this).find(".sexo-value").text().toLowerCase().indexOf(sexo) > -1;
-        var matchesCarrera = $(this).find(".carrera-value").text().toLowerCase().indexOf(carrera) > -1;
-        var matchesCuenta = $(this).find(".cuenta").text().toLowerCase().indexOf(cuenta) > -1;
-        var matchesTelefono = $(this).find(".tel-value").text().indexOf(telefono) > -1;
-
-        $(this).toggle(matchesNombre && matchesSexo && matchesCarrera && matchesTelefono && matchesCuenta);
-
-      });
-    }
-  });
-
-  const buscadorTel = document.getElementById('buscadorTel');
-  buscadorTel.addEventListener('input', function() {
-    let value = this.value.replace(/\D/g, '');
-    if (value.length >= 2) {
-      value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-    }
-    if (value.length >= 10) {
-      value = `${value.slice(0, 9)}-${value.slice(9)}`;
-    }
-    this.value = value.slice(0, 14);
-  });
-  
-
-</script>
             
 <div class="card">
   <div class="table-responsive">
@@ -377,6 +285,31 @@ $(document).ready(function(){
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/datatable.js"></script>
+  
+  <script src="../assets/js/jquery-3.3.1.js"></script>
+  <script src="../assets/js/jquery.dataTables.min.js"></script>
+  <script src="../assets/js/dataTables.buttons.min.js"></script>
+  <script src="../assets/js/buttons.flash.min.js"></script>
+  <script src="../assets/js/jszip.min.js"></script>
+  <script src="../assets/js/pdfmake.min.js"></script>
+  <script src="../assets/js/vfs_fonts.js"></script>
+  <script src="../assets/js/buttons.html5.min.js"></script>
+  <script src="../assets/js/bootstrap.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/bootstrap-toggle.min.js"></script>
+
+  <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.css"/>
+
+<!-- DataTables JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.js"></script>
+
+<!-- DataTables Buttons JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+
 
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

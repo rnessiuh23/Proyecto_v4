@@ -159,7 +159,7 @@ document.addEventListener('keydown', function(event) {
             
 <div class="card">
   <div class="table-responsive">
-    <table class="table align-items-center mb-0" id="tabla-lista">
+    <table class="table align-items-center mb-0" id="tablaFormatos">
       <thead class="">
         <tr>
           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Acción</th>
@@ -303,6 +303,31 @@ document.addEventListener('keydown', function(event) {
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/datatable.js"></script>
+  
+  <script src="../assets/js/jquery-3.3.1.js"></script>
+  <script src="../assets/js/jquery.dataTables.min.js"></script>
+  <script src="../assets/js/dataTables.buttons.min.js"></script>
+  <script src="../assets/js/buttons.flash.min.js"></script>
+  <script src="../assets/js/jszip.min.js"></script>
+  <script src="../assets/js/pdfmake.min.js"></script>
+  <script src="../assets/js/vfs_fonts.js"></script>
+  <script src="../assets/js/buttons.html5.min.js"></script>
+  <script src="../assets/js/bootstrap.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/bootstrap-toggle.min.js"></script>
+
+  <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.css"/>
+
+<!-- DataTables JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.js"></script>
+
+<!-- DataTables Buttons JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

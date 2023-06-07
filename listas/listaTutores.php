@@ -154,59 +154,12 @@ document.addEventListener('keydown', function(event) {
         <div class="col-12 mt-4">
           <div class="card mb-4">
              <div class="card-header pb-0 p-3">
-            </div>
-
-<!--Inputs para realizar una busqueda por filtros-->
-
-            <label for="buscadorNombre">Busqueda por nombre:</label>
-            <input type="text" id="buscadorNombre" class="form-control form-control-sm" placeholder="nombre">
-
-            <label for="buscadorDenominacion">Busqueda por denominacion:</label>
-            <select id="buscadorDenominacion" class="form-control form-control-sm">
-              <option value="">Todos</option>
-              <option value="Dr.">Dr.</option>
-              <option value="Mstr.">Mstr.</option>
-              <option value="Lic.">Lic.</option>
-              <option value="Ing.">Ing.</option>
-            </select>
-
-            
-<script> //Script que ejecuta el funcionamiento de los filtros de busqueda
-$(document).ready(function() {
-  var denominacion = $("#buscadorDenominacion").val().toLowerCase();
-  var nombre = $("#buscadorNombre").val().toLowerCase();
-
-  $("#buscadorDenominacion").on("change", function() {
-    denominacion = $(this).val().toLowerCase();
-    buscar(nombre, denominacion);
-  });
-
-  $("#buscadorNombre").on("keyup", function() {
-    nombre = $(this).val().toLowerCase();
-    buscar(nombre, denominacion);
-  });
-
-  function buscar(nombre, denominacion) {
-    $("#tabla-Tuto tr").each(function() {
-      var tdNombre = $(this).find(".nombreTutor-value");
-      var tdDenominacion = $(this).find(".denominacion-value");
-
-      var matchesNombre = tdNombre.text().toLowerCase().indexOf(nombre) > -1;
-      var matchesDenominacion = denominacion === "" || tdDenominacion.text().toLowerCase().includes(denominacion);
-
-      $(this).toggle(matchesNombre && matchesDenominacion);
-
-      });
-    }
-  });
-
-
-  </script> 
+              </div>
             
             
 <div class="card">
   <div class="table-responsive">
-    <table class="table align-items-center mb-0" id="tabla-lista">
+    <table class="table align-items-center mb-0" id="tablaTut">
       <thead class="">
         <tr>
           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Acción</th>
@@ -289,7 +242,33 @@ $(document).ready(function() {
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <!--<script src="../assets/js/datatable.js"></script>-->
+  <script src="../assets/js/datatable.js"></script>
+  
+  <script src="../assets/js/jquery-3.3.1.js"></script>
+  <script src="../assets/js/jquery.dataTables.min.js"></script>
+  <script src="../assets/js/dataTables.buttons.min.js"></script>
+  <script src="../assets/js/buttons.flash.min.js"></script>
+  <script src="../assets/js/jszip.min.js"></script>
+  <script src="../assets/js/pdfmake.min.js"></script>
+  <script src="../assets/js/vfs_fonts.js"></script>
+  <script src="../assets/js/buttons.html5.min.js"></script>
+  <script src="../assets/js/bootstrap.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script src="../assets/js/bootstrap-toggle.min.js"></script>
+
+  <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.css"/>
+
+<!-- DataTables JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.js"></script>
+
+<!-- DataTables Buttons JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
